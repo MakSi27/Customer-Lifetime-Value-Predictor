@@ -90,11 +90,10 @@ Raw Data → EDA → Feature Engineering → RFM Analysis → Model Building →
 
 ## Key Business Questions Answered
 
-- Which customers have the highest lifetime value?
-- Which age group spends the most?
-- Does subscription status impact LTV?
-- Which season drives maximum purchases?
-- Do promo codes attract high value or low value customers?
+1. **Who are our most valuable customers?** Can we identify the specific traits (e.g., location, age, gender) of customers who generate the highest lifetime value?
+2. **How does engagement impact spending?** Does having a subscription, using promo codes, or selecting express shipping significantly increase a customer's total value?
+3. **Which product categories drive loyalty?** Are there specific product categories (e.g., Outerwear vs. Accessories) that lead to longer retention and higher overall spend?
+4. **What is the projected value of a new customer?** Can we accurately predict a new user's lifetime spend based on their initial profile and first few purchases?
 
 
 ---
