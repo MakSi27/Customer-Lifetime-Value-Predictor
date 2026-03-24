@@ -1,0 +1,48 @@
+### My Contribution (Feature Engineering & Target Creation)
+
+* Designed and implemented an end-to-end feature engineering pipeline
+
+* Started from the preprocessed dataset and transformed it into a model-ready format
+
+* Incorporated **RFM-based features**:
+
+  * `recency` (approximated using inverse purchase frequency)
+  * `frequency` (purchase frequency)
+  * `monetary` (purchase amount)
+
+* Engineered additional high-impact behavioral features:
+
+  * `loyalty_score` (customer retention)
+  * `spending_power` (purchase strength)
+  * `satisfaction_score` (engagement quality)
+  * `value_per_purchase`, `deal_sensitivity`, etc.
+
+* Defined **Customer Lifetime Value (LTV)** using a weighted combination of key factors including spending, frequency, past purchases, rating, and subscription status
+
+* Converted LTV into a classification problem using quantile-based segmentation (`customer_segment`: Low / Medium / High)
+
+* Ensured **zero data leakage** by removing intermediate target-driving columns
+
+* Optimized the dataset by reducing redundancy while preserving predictive features
+
+---
+
+### Project Pipeline
+
+1. Data Cleaning & Encoding
+2. Feature Engineering (RFM + behavioral features)
+3. LTV Score Creation (advanced + baseline)
+4. Customer Segmentation (Low / Medium / High)
+5. Model Training & Hyperparameter Tuning
+6. Model Evaluation & Insights
+7. Deployment (Streamlit UI)
+
+---
+
+### Key Insights
+
+* Customer value is strongly driven by **purchase frequency and past behavior**
+* Loyalty-based features (`loyalty_score`) show high predictive importance
+* High spending alone does not define high-value customers — **consistency matters**
+* Discount-driven users are not necessarily high-value customers
+* Combining RFM with engineered features improves model performance and interpretability
