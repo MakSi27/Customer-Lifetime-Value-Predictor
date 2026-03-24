@@ -59,6 +59,15 @@ graph LR
     style H fill:#6f42c1,stroke:#fff,stroke-width:2px,color:#fff
 ```
 
+
+1. **Data Cleaning** — Handle missing values, fix data types
+2. **EDA** — Explore patterns, purchase behavior, seasonal trends
+3. **Feature Engineering** — Build RFM (Recency, Frequency, Monetary) features
+4. **LTV Calculation** — Define and compute LTV target variable
+5. **Model Building** — Train ML models (Linear Regression, XGBoost, Random Forest)
+6. **Evaluation** — RMSE, MAE, R2 Score
+7. **Insights** — Top customer segments, high value customer profiles
+
 ---
 
 ## Dataset Features
@@ -84,16 +93,6 @@ graph LR
 | Payment Method | Mode of payment |
 | Frequency of Purchases | How often the customer purchases |
 
----
-
-
-1. **Data Cleaning** — Handle missing values, fix data types
-2. **EDA** — Explore patterns, purchase behavior, seasonal trends
-3. **Feature Engineering** — Build RFM (Recency, Frequency, Monetary) features
-4. **LTV Calculation** — Define and compute LTV target variable
-5. **Model Building** — Train ML models (Linear Regression, XGBoost, Random Forest)
-6. **Evaluation** — RMSE, MAE, R2 Score
-7. **Insights** — Top customer segments, high value customer profiles
 
 ---
 
