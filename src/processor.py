@@ -9,11 +9,8 @@ def preprocess_data(df):
 # 2. Create LTV (TARGET VARIABLE)
 
 def create_ltv(df):
-    df["LTV"] = (
-        df["Purchase Amount (USD)"] *
-        df["Frequency of Purchases"] *
-        df["Previous Purchases"]
-    ) * (1 + 0.1 * df["Review Rating"]) * (1 + 0.2 * df["Subscription Status"])
+    df['ltv'] = (0.30 * df['monetary'] +0.25 * df['frequency'] +0.20 * df['Previous Purchases'] +0.15 * df['Review Rating'] +0.10 * df['Subscription Status']
+)
 
     return df
 
