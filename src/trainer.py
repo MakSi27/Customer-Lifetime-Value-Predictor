@@ -11,10 +11,15 @@ def split_data(df):
    
     X = df.drop([
         "ltv",
-        "customer_segment"
-    ], axis=1)
+        "customer_segment",
+        "Purchase Amount (USD)",
+        "Frequency of Purchases",
+        "Previous Purchases",
+        "Review Rating",
+        "Subscription Status"
+    ], axis=1, errors='ignore')
 
-    y = df["customer_segment"]
+    y = df["ltv"]
 
     X_train, X_test, y_train, y_test = train_test_split(
         X, y,
