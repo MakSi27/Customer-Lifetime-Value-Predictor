@@ -235,14 +235,13 @@ elif page == "Predict Customer LTV":
     
     # Extract Real Raw Stats
     c_raw = raw_df.iloc[selected_idx]
-    # Extract Processed Feature Vector for Inference
-    c_proc = proc_df.iloc[selected_idx][feature_names]
     
     # True computed LTV baseline
     real_ltv = proc_df.iloc[selected_idx]['ltv']
     
-    # Perform Inference 
-    vector = c_proc.to_frame().T
+    # Perform Inference
+    # Using [[selected_idx]] returns a 1-row DataFrame, preserving dtypes correctly
+    vector = proc_df[feature_names].iloc[[selected_idx]]
     pred_ltv = model.predict(vector)[0]
     
     # Layout 1: Customer Profile
