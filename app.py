@@ -17,40 +17,43 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Applying custom CSS for dark glassmorphism
+# Applying custom CSS for light minimalism
 st.markdown("""
 <style>
-    /* Global background gradient */
+    /* Global background layout */
     .stApp {
-        background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-        color: #f8fafc;
+        background-color: #f8fafc;
+        color: #1e293b;
         font-family: 'Inter', sans-serif;
     }
 
-    /* Sidebar Glassmorphism */
+    /* Sidebar Clean styling */
     [data-testid="stSidebar"] {
-        background: rgba(15, 23, 42, 0.4) !important;
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-right: 1px solid rgba(255, 255, 255, 0.05);
+        background-color: #ffffff !important;
+        border-right: 1px solid #e2e8f0;
+    }
+    
+    /* Sidebar text color override for Light Mode */
+    [data-testid="stSidebar"] * {
+        color: #334155 !important;
     }
     
     /* Input Fields */
     .stNumberInput input, .stSelectbox select, .stTextInput input, .stSlider > div > div > div > div > div {
-        background: rgba(30, 41, 59, 0.5) !important;
-        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-        color: #f8fafc !important;
+        background-color: #ffffff !important;
+        border: 1px solid #cbd5e1 !important;
+        color: #1e293b !important;
         border-radius: 8px !important;
         transition: all 0.3s ease;
     }
     .stNumberInput input:focus, .stSelectbox select:focus, .stTextInput input:focus {
-        border-color: #6366f1 !important;
-        box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2) !important;
+        border-color: #2563eb !important;
+        box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2) !important;
     }
 
     /* Buttons */
     .stButton > button {
-        background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%) !important;
+        background-color: #2563eb !important;
         color: white !important;
         border: none !important;
         padding: 12px 24px !important;
@@ -59,28 +62,38 @@ st.markdown("""
         letter-spacing: 0.5px !important;
         transition: transform 0.3s ease, box-shadow 0.3s ease !important;
         width: 100%;
+        box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.1) !important;
     }
     .stButton > button:hover {
         transform: translateY(-2px) !important;
-        box-shadow: 0 10px 20px -10px rgba(99, 102, 241, 0.6) !important;
+        box-shadow: 0 10px 20px -10px rgba(37, 99, 235, 0.4) !important;
     }
 
     /* Metric Cards */
     div[data-testid="metric-container"] {
-        background: rgba(30, 41, 59, 0.4);
-        border: 1px solid rgba(255, 255, 255, 0.05);
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
         padding: 24px;
         border-radius: 12px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+    
+    div[data-testid="metric-container"] label {
+        color: #64748b !important;
+    }
+    div[data-testid="metric-container"] div[data-testid="stMetricValue"] {
+        color: #0f172a !important;
     }
     
     /* Headers & Text */
     h1, h2, h3 {
-        background: linear-gradient(to right, #f8fafc, #94a3b8);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: #0f172a !important;
         font-weight: 700;
+        background: none !important;
+        -webkit-text-fill-color: initial !important;
+    }
+    p, span, div {
+        color: #1e293b;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -180,15 +193,15 @@ if page == "Dashboard & EDA":
     with c1:
         st.subheader("Category Purchasing Volume")
         fig1 = px.histogram(raw_df, x="Category", color="Gender", barmode="group",
-                            color_discrete_sequence=['#6366f1', '#e879f9'])
-        fig1.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font_color="#f8fafc")
+                            color_discrete_sequence=['#2563eb', '#14b8a6'])
+        fig1.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font_color="#1e293b")
         st.plotly_chart(fig1, use_container_width=True)
 
     with c2:
         st.subheader("Seasonality of Reviews")
         fig2 = px.box(raw_df, x="Season", y="Review Rating", color="Season",
-                      color_discrete_sequence=['#3b82f6', '#14b8a6', '#f59e0b', '#f43f5e'])
-        fig2.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font_color="#f8fafc")
+                      color_discrete_sequence=['#2563eb', '#14b8a6', '#f59e0b', '#ef4444'])
+        fig2.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", font_color="#1e293b")
         st.plotly_chart(fig2, use_container_width=True)
 
     st.divider()
@@ -201,9 +214,9 @@ if page == "Dashboard & EDA":
     top_vals = importances[indices]
     
     fig3 = px.bar(x=top_vals, y=top_features, orientation='h',
-                  color=top_vals, color_continuous_scale="Purp")
+                  color=top_vals, color_continuous_scale="Blues")
     fig3.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", 
-                       font_color="#f8fafc", xaxis_title="Importance Weight", yaxis_title="Feature")
+                       font_color="#1e293b", xaxis_title="Importance Weight", yaxis_title="Feature")
     st.plotly_chart(fig3, use_container_width=True)
 
 
@@ -260,18 +273,18 @@ elif page == "Predict Customer LTV":
     res1, res2 = st.columns(2)
     with res1:
         st.markdown(f"""
-        <div style="background: rgba(99, 102, 241, 0.1); border: 1px solid #6366f1; padding: 30px; border-radius: 12px; text-align: center;">
-            <h2 style="margin: 0; color: #f8fafc; font-size: 1.5rem;">Predicted Multi-Factor LTV</h2>
-            <h1 style="margin: 10px 0 0 0; font-size: 3.5rem; color: #818cf8; font-weight: 800;">{pred_ltv:.2f}</h1>
+        <div style="background: #eff6ff; border: 1px solid #2563eb; padding: 30px; border-radius: 12px; text-align: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+            <h2 style="margin: 0; color: #1e293b; font-size: 1.5rem; background: none; -webkit-text-fill-color: #1e293b;">Predicted Multi-Factor LTV</h2>
+            <h1 style="margin: 10px 0 0 0; font-size: 3.5rem; color: #2563eb; font-weight: 800; background: none; -webkit-text-fill-color: #2563eb;">{pred_ltv:.2f}</h1>
         </div>
         """, unsafe_allow_html=True)
         
     with res2:
         st.markdown(f"""
-        <div style="background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255,255,255,0.1); padding: 30px; border-radius: 12px; text-align: center; height: 100%;">
-            <h2 style="margin: 0; color: #94a3b8; font-size: 1.5rem;">Calculated Base LTV</h2>
-            <h1 style="margin: 10px 0 0 0; font-size: 2.5rem; color: #cbd5e1; font-weight: 700;">{real_ltv:.2f}</h1>
-            <p style="margin-top:20px; color: #64748b;">(Baseline target variable calculated previously)</p>
+        <div style="background: #ffffff; border: 1px solid #e2e8f0; padding: 30px; border-radius: 12px; text-align: center; height: 100%; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+            <h2 style="margin: 0; color: #64748b; font-size: 1.5rem; background: none; -webkit-text-fill-color: #64748b;">Calculated Base LTV</h2>
+            <h1 style="margin: 10px 0 0 0; font-size: 2.5rem; color: #334155; font-weight: 700; background: none; -webkit-text-fill-color: #334155;">{real_ltv:.2f}</h1>
+            <p style="margin-top:20px; color: #94a3b8;">(Baseline target variable calculated previously)</p>
         </div>
         """, unsafe_allow_html=True)
 
