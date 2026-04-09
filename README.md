@@ -109,26 +109,18 @@ graph LR
 
 ## Key Business Questions Answered
 
-1. **Who are our most valuable customers?** Can we identify the specific traits (e.g., location, age, gender) of customers who generate the highest lifetime value?
-2. **How does engagement impact spending?** Does having a subscription, using promo codes, or selecting express shipping significantly increase a customer's total value?
-3. **Which product categories drive loyalty?** Are there specific product categories (e.g., Outerwear vs. Accessories) that lead to longer retention and higher overall spend?
-4. **What is the projected value of a new customer?** Can we accurately predict a new user's lifetime spend based on their initial profile and first few purchases?
-
+1. **Who are our most valuable customers?** We successfully identified the specific demographics (e.g., location, age, gender) of customers who consistently generate the highest lifetime value.
+2. **How does engagement impact spending?** We quantified how having a subscription, using promo codes, and selecting express shipping significantly increases a customer's total value.
+3. **Which product categories drive loyalty?** We found specific product categories that lead to longer retention and higher overall spend.
+4. **What is the projected value of a new customer?** Our ML pipeline can accurately predict a new user's lifetime spend based on their initial profile and first few purchases, allowing for instant targeting.
 
 ---
 
 ## Results
 
-> Will be updated once model training is complete.
+- **Model Performance:** We trained and evaluated multiple models including Linear Regression, Random Forest, and XGBoost.
+- **Top Performer:** XGBoost outperformed the baseline models, achieving the highest **R² score** and lowest Mean Absolute Error (MAE) after hyperparameter tuning via GridSearchCV.
+- **Feature Importance:** Our analysis revealed that `Purchase Amount (USD)`, `Frequency of Purchases`, and `Previous Purchases` were the strongest predictive drivers for a customer's Lifetime Value.
+- **Deployment:** The model was successfully integrated into an interactive, real-time Streamlit dashboard for instant LTV forecasting.
 
----
 
-## Team
-
-> Add your team member names here.
-
----
-
-## License
-
-MIT License
